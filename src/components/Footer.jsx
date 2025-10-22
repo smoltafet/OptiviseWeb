@@ -1,20 +1,42 @@
 const Footer = () => {
     return (
-      <footer className="bg-white py-4 mt-5">
-        <div className="container mx-auto space-y-8">
-          {/* Bottom Section */}
-          <div className="flex justify-between items-center border-t border-gray-300 pt-4 border-b border-gray-300 pb-4">
-            <p>&copy; Optivise. All rights reserved.</p>
-            <a href="/#" className="text-orange-500 hover:underline">
-              Privacy Policy
-            </a>
+      <footer className="py-16" style={{ backgroundColor: '#fcfcfb' }}>
+        <div className="w-full">
+          <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+            {/* Logo Section */}
+            <div className="flex items-center mb-8 md:mb-0">
+              <img 
+                src="/logo.png" 
+                alt="Optivise" 
+                className="w-16 h-16 mr-5"
+              />
+              <span className="text-4xl font-medium text-gray-900">Optivise</span>
+            </div>
+
+            {/* Links Section */}
+            <div className="flex flex-col md:flex-row gap-12">
+              {/* Product Column */}
+              <div>
+                <h3 className="text-sm font-semibold text-gray-900 mb-4">Product</h3>
+                <ul className="space-y-3">
+                  <li><a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">Login</a></li>
+                  <li><a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">Watch Demo</a></li>
+                  <li><a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">Schedule Call</a></li>
+                </ul>
+              </div>
+
+              {/* Company Column */}
+              <div>
+                <h3 className="text-sm font-semibold text-gray-900 mb-4">Company</h3>
+                <ul className="space-y-3">
+                  <li><a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">Contact</a></li>
+                  <li><a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">Terms</a></li>
+                  <li><a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">Privacy</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
-  
-          {/* Logo Section */}
-          <div className="text-center pt-8 mb-5">
-            <h1 className="text-9xl font-light text-black">
-                 Optivise
-            </h1>
           </div>
         </div>
       </footer>

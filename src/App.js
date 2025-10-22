@@ -1,12 +1,13 @@
 import React from 'react';
 import Hero from './components/Hero';
-import TextSection from './components/TextSection';
 import WhyUs from './components/WhyUs';
 import Footer from './components/Footer.jsx';
-import List from './components/List.tsx';
 import Video from './components/Video';
-import Role from './components/Role';
-import Header from './components/Header'; 
+import Header from './components/Header';
+import HowItWorks from './components/HowItWorks';
+import ExperimentationLifecycle from './components/ExperimentationLifecycle';
+import KeyBenefits from './components/KeyBenefits';
+import Newsletter from './components/Newsletter'; 
 function App() {
   return (
     <div className="overflow-x-hidden">
@@ -14,16 +15,19 @@ function App() {
       <div className="md:px-[15%] sm:px-3 gap-2">
         <Header />
         <Hero />
-        <Role />
-        <img src="/quick.png" alt="Analytics" className="w-full rounded-4xl mt-1" />
-        <TextSection />
+        <div className="border-t border-gray-200 my-16"></div>
+        <ExperimentationLifecycle />
+        <div className="border-t border-gray-200 my-16"></div>
+        <KeyBenefits />
+        <div className="border-t border-gray-200 my-16"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           <Video />
           <WhyUs />
         </div>
-        <List />
-        <Footer />
+        <div className="border-t border-gray-200 my-16"></div>
+        <Newsletter />
       </div>
+      <Footer />
     </div>
   );
 }

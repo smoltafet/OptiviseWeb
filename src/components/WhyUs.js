@@ -1,18 +1,58 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const WhyUs = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="py-5 px-4 border border-gray-400 rounded-4xl bg-gradient-to-r from-indigo-400 to-purple-500 text-white">
-      <div className="max-w-4xl mx-auto text-left">
-        {/* Header & Subheader */}
-        <h2 className="text-7xl mb-10 font-light p-2">Why Us?</h2>
-        <p className="text-3xl mb-10 mr-12 font-light">
-        We will save your team valuable time and resources. With seamless integration into 
-        tools like Google Analytics or Mixpanel, you’ll get actionable, data-driven insights 
-        to improve engagement and conversions. Focus on building high-impact features 
-        while we continuously optimize your UI for success.
-        </p>
-        
+    <section ref={sectionRef} className="py-20 bg-white">
+      <div className="container mx-auto px-6">
+        {/* Header */}
+        <div className={`transform transition-all duration-1000 ease-out ${
+          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+        }`}>
+          <div className="text-left mb-16">
+            <div className="text-blue-600 text-sm font-medium mb-2">Why Us</div>
+            <h2 className="text-6xl font-light text-gray-900 mb-6 leading-tight">
+              We help your team experiment faster — and smarter.
+            </h2>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className={`transform transition-all duration-1000 ease-out ${
+          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'
+        }`} style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
+          <div className="max-w-4xl">
+            <p className="text-xl text-gray-600 leading-relaxed">
+              With built-in AI and seamless integrations into tools like Statsig, Optivise automates experiment creation, deployment, and analysis. You'll get actionable insights without writing a single line of code — freeing your team to focus on innovation while Optivise continuously tests, learns, and improves your user experience.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
