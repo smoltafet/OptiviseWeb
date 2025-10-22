@@ -1,4 +1,5 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Hero from './components/Hero';
 import WhyUs from './components/WhyUs';
 import Footer from './components/Footer.jsx';
@@ -6,11 +7,12 @@ import Video from './components/Video';
 import Header from './components/Header';
 import ExperimentationLifecycle from './components/ExperimentationLifecycle';
 import KeyBenefits from './components/KeyBenefits';
-import Newsletter from './components/Newsletter'; 
-function App() {
+import Newsletter from './components/Newsletter';
+import Login from './components/Login';
+
+function HomePage() {
   return (
     <div className="overflow-x-hidden">
- 
       <div className="md:px-[15%] sm:px-3 gap-2">
         <Header />
         <Hero />
@@ -28,6 +30,15 @@ function App() {
       </div>
       <Footer />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<Login />} />
+    </Routes>
   );
 }
 
