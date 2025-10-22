@@ -15,6 +15,16 @@ const Header = () => {
     }, 300);
   };
 
+  const handleDemoClick = (e) => {
+    e.preventDefault();
+    setIsTransitioning(true);
+    
+    // Wait for fade animation to complete, then navigate
+    setTimeout(() => {
+      navigate('/schedule');
+    }, 300);
+  };
+
   return (
     <div className={`transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
       <header className="w-full z-50 sticky top-0 bg-white border-b border-gray-200">
@@ -31,7 +41,9 @@ const Header = () => {
             className="text-gray-700 hover:text-gray-900 font-medium transition-colors">
             Login
           </button>
-          <button className="bg-gray-900 text-white hover:bg-gray-800 font-medium rounded-lg px-6 py-2 cursor-pointer">
+          <button 
+            onClick={handleDemoClick}
+            className="bg-gray-900 text-white hover:bg-gray-800 font-medium rounded-lg px-6 py-2 cursor-pointer transition-colors">
             Get the demo →
           </button>
         </div>

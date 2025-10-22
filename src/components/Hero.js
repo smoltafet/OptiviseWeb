@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showDemoForm, setShowDemoForm] = useState(false);
   const [email, setEmail] = useState('');
+  const navigate = useNavigate();
   const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
@@ -77,7 +79,9 @@ const Hero = () => {
           isVisible ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0'
         }`}>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-gray-900 text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 flex items-center gap-2">
+            <button 
+              onClick={() => navigate('/schedule')}
+              className="bg-gray-900 text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 flex items-center gap-2">
               Schedule a call →
             </button>
             {!showDemoForm && !showSuccess ? (
