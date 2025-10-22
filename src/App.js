@@ -4,7 +4,6 @@ import WhyUs from './components/WhyUs';
 import Footer from './components/Footer.jsx';
 import Video from './components/Video';
 import Header from './components/Header';
-import HowItWorks from './components/HowItWorks';
 import ExperimentationLifecycle from './components/ExperimentationLifecycle';
 import KeyBenefits from './components/KeyBenefits';
 import Newsletter from './components/Newsletter'; 
