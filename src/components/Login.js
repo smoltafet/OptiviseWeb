@@ -34,10 +34,7 @@ const Login = () => {
     }, 5000);
   };
 
-  const handleGoogleSubmit = (e) => {
-    e.preventDefault();
-    // This will be handled by the Google Sign-In button
-  };
+  // Google Sign-In is handled by the GoogleLogin component
 
   // Google Sign-In callback function
   const handleGoogleSignIn = (response) => {
