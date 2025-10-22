@@ -1,10 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLoginClick = (e) => {
+    e.preventDefault();
+    setIsTransitioning(true);
+    
+    // Wait for fade animation to complete, then navigate
+    setTimeout(() => {
+      navigate('/login');
+    }, 300);
+  };
+
   return (
-    <header className="w-full z-50 sticky top-0 bg-white border-b border-gray-200">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+    <div className={`transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+      <header className="w-full z-50 sticky top-0 bg-white border-b border-gray-200">
+        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-3">
           <img src="/logo-transparent.png" alt="Optivise" className="w-8 h-8" />
           <h1 className="text-2xl font-medium text-gray-900">
@@ -12,17 +26,18 @@ const Header = () => {
           </h1>
         </Link>
         <div className="flex items-center gap-4">
-          <Link
-            to="/login"
-            className="text-gray-700 hover:text-gray-900 font-medium">
+          <button
+            onClick={handleLoginClick}
+            className="text-gray-700 hover:text-gray-900 font-medium transition-colors">
             Login
-          </Link>
+          </button>
           <button className="bg-gray-900 text-white hover:bg-gray-800 font-medium rounded-lg px-6 py-2 cursor-pointer">
             Get the demo →
           </button>
         </div>
       </div>
     </header>
+    </div>
   );
 };
 

@@ -4,6 +4,7 @@ const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showDemoForm, setShowDemoForm] = useState(false);
   const [email, setEmail] = useState('');
+  const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -16,8 +17,14 @@ const Hero = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Demo requested for:', email);
+    setShowSuccess(true);
     setEmail('');
-    setShowDemoForm(false);
+    
+    // Hide success message and form after 3 seconds
+    setTimeout(() => {
+      setShowSuccess(false);
+      setShowDemoForm(false);
+    }, 3000);
   };
 
   return (
@@ -73,12 +80,21 @@ const Hero = () => {
             <button className="bg-gray-900 text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 flex items-center gap-2">
               Schedule a call →
             </button>
-            {!showDemoForm ? (
+            {!showDemoForm && !showSuccess ? (
               <button 
                 onClick={() => setShowDemoForm(true)}
                 className="bg-white text-gray-900 border border-gray-300 px-8 py-4 rounded-lg font-medium hover:bg-gray-50 transition-all duration-300 flex items-center gap-2">
                 Watch a demo ▷
               </button>
+            ) : showSuccess ? (
+              <div className="flex items-center gap-3 bg-green-50 border border-green-200 rounded-xl px-6 py-4">
+                <div className="flex-shrink-0">
+                  <svg className="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span className="text-green-800 font-medium">Demo request sent successfully!</span>
+              </div>
             ) : (
               <form onSubmit={handleSubmit} className="relative">
                 <div 
