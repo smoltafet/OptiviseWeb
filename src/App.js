@@ -9,6 +9,10 @@ import ExperimentationLifecycle from './components/ExperimentationLifecycle';
 import KeyBenefits from './components/KeyBenefits';
 import Newsletter from './components/Newsletter';
 import Login from './components/Login';
+import Calendar from './components/Calendar';
+import Terms from './components/Terms';
+import Privacy from './components/Privacy';
+import Contact from './components/Contact';
 
 function HomePage() {
   return (
@@ -38,6 +42,10 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/schedule" element={<Calendar />} />
+      <Route path="/terms" element={<Terms />} />
+      <Route path="/privacy" element={<Privacy />} />
+      <Route path="/contact" element={<Contact />} />
     </Routes>
   );
 }
