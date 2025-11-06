@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "@react-oauth/google": "^0.12.2",
+    "@statsig/react-bindings": "^3.29.1",
+    "@statsig/session-replay": "^3.29.1",
+    "@statsig/web-analytics": "^3.29.1",
     "@tailwindcss/postcss": "^4.0.3",
     "cra-template": "1.2.0",
     "react": "^19.0.0",
